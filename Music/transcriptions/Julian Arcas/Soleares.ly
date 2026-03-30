@@ -167,6 +167,8 @@ guitarOne = \relative c'' {
 
 guitarTwo = \relative c' {
   \voiceTwo
+  \mergeDifferentlyDottedOn
+  \mergeDifferentlyHeadedOn
 
   a8 c e |
   e,8[ gs16 b e8] |
@@ -183,8 +185,6 @@ guitarTwo = \relative c' {
   \barNumberCheck 9
 
   \fixed c {
-    \mergeDifferentlyDottedOn
-    \mergeDifferentlyHeadedOn
     <<
       \new Voice {
         \voiceOne
@@ -215,15 +215,11 @@ guitarTwo = \relative c' {
         e4. |
       }
     >>
-    \mergeDifferentlyDottedOff
-    \mergeDifferentlyHeadedOff
   }
   
   \barNumberCheck 17
 
   \fixed c {
-    \mergeDifferentlyDottedOn
-    \mergeDifferentlyHeadedOn
     <<
       \new Voice {
         \voiceOne
@@ -241,8 +237,6 @@ guitarTwo = \relative c' {
         f'4. | d'4. | e4. | e4. |
       }
     >>
-    \mergeDifferentlyDottedOff
-    \mergeDifferentlyHeadedOff
   }
   
   \barNumberCheck 25
@@ -262,8 +256,6 @@ guitarTwo = \relative c' {
   \barNumberCheck 33
 
   \fixed c' {
-    \mergeDifferentlyDottedOn
-    \mergeDifferentlyHeadedOn
     <<
       \new Voice {
         \voiceOne
@@ -277,15 +269,11 @@ guitarTwo = \relative c' {
         e4. | e4. | f4. | e4. |
       }
     >>
-    \mergeDifferentlyDottedOff
-    \mergeDifferentlyHeadedOff
   }
 
   \barNumberCheck 37
 
   \fixed c' {
-    \mergeDifferentlyDottedOn
-    \mergeDifferentlyHeadedOn
     <<
       \new Voice {
         \voiceOne
@@ -307,14 +295,10 @@ guitarTwo = \relative c' {
         a4. | g4. | f4. | e4. |
       }
     >>
-    \mergeDifferentlyDottedOff
-    \mergeDifferentlyHeadedOff
   }
 
   \barNumberCheck 45
   
-  \mergeDifferentlyDottedOn
-  \mergeDifferentlyHeadedOn
   <<
     \relative c'' \new Voice {
       \voiceOne
@@ -347,13 +331,8 @@ guitarTwo = \relative c' {
       e,4. |
     }
   >>
-  \mergeDifferentlyDottedOff
-  \mergeDifferentlyHeadedOff
 
   \barNumberCheck 53
-
-  \mergeDifferentlyDottedOn
-  \mergeDifferentlyHeadedOn
 
   \fixed c
   <<
@@ -370,13 +349,7 @@ guitarTwo = \relative c' {
     }
   >>
 
-  \mergeDifferentlyDottedOff
-  \mergeDifferentlyHeadedOff
-
   \barNumberCheck 57
-
-  \mergeDifferentlyDottedOn
-  \mergeDifferentlyHeadedOn
 
   \fixed c' {
     <<
@@ -399,14 +372,8 @@ guitarTwo = \relative c' {
       }
     >>
   }
-
-  \mergeDifferentlyDottedOff
-  \mergeDifferentlyHeadedOff
   
   \barNumberCheck 65
-
-  \mergeDifferentlyDottedOn
-  \mergeDifferentlyHeadedOn
 
   <<
     \new Voice {
