@@ -181,8 +181,6 @@ guitarOne = \relative c'' {
 
 guitarTwo = \relative c' {
   \voiceTwoCust
-  \mergeDifferentlyDottedOn
-  \mergeDifferentlyHeadedOn
 
   a8 c e |
   e,8[ gs16 b e8] |
@@ -402,9 +400,6 @@ guitarTwo = \relative c' {
     }
   >>
 
-  \mergeDifferentlyDottedOff
-  \mergeDifferentlyHeadedOff
- 
 }
 
 
@@ -413,10 +408,14 @@ guitarTwo = \relative c' {
   <<
     \new Staff = "guitar1" {
       \time 3/8
+      \mergeDifferentlyDottedOn
+      \mergeDifferentlyHeadedOn
       \guitarOne
     }
     \new Staff = "guitar2" {
       \time 3/8
+      \mergeDifferentlyDottedOn
+      \mergeDifferentlyHeadedOn
       \guitarTwo
     }
   >>
