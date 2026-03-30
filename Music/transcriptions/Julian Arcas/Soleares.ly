@@ -12,6 +12,12 @@ Transcribed by Roman Bureacov
   composer = "Julian Arcas"
 }
 
+
+voiceTwoCust = {
+  \voiceTwo
+  \override Dots.direction = #UP
+}
+
 guitarOne = \relative c'' {
   \voiceOne
   
@@ -25,16 +31,21 @@ guitarOne = \relative c'' {
     a,16 b d b c a |
     g8[ b16 d g8] |
     
+    \break
+
     e,16 f g a g f |
     e8[ gs16 b e8] |
   }
-  
+
   \barNumberCheck 9
   
   \relative c'' \repeat volta 2 {
     e8 fs gs |
     a8 b c |
     d8[ c16 b c8] |
+
+    \break
+ 
     r8 b16 c d c |
     b8[ a16 gs a8] |
     r8 \tuplet 3/2 { g16[ a g] } \tuplet 3/2 { f16[ g f] } |
@@ -45,7 +56,6 @@ guitarOne = \relative c'' {
       \\
       { \stemDown e,4 r8 }
     >>
-
   }
 
   \barNumberCheck 17
@@ -53,12 +63,14 @@ guitarOne = \relative c'' {
   \relative c''' \repeat volta 2 {
     c8 a b |
     c8 d c |
+    \break
     b8[ a16 gs a8]~ |
     a8 b c |
     b8[ a16 gs a8]~ |
     a8 \noBeam \tuplet 3/2 { g16[ a g] } \tuplet 3/2 { f16[ g f] } |
     e4.~ |
     e4 r8 |
+    \break
   }
 
   \barNumberCheck 25
@@ -73,6 +85,8 @@ guitarOne = \relative c'' {
     a,16 b d b c a |
     g8[ b16 d g8] |    
 
+    \break
+    
     e,16 f g a g f |
     e8[ gs16 b e8] |
 
@@ -87,6 +101,8 @@ guitarOne = \relative c'' {
     a8[ g16 f e8] |
   }
 
+  \break
+
   \barNumberCheck 37
 
   \relative c''' \repeat volta 2 {
@@ -94,6 +110,7 @@ guitarOne = \relative c'' {
     e8[ d16 c b8] |
     a16 b c d e f |
     e8[ d16 c b8] |
+    \break
     a8 \tuplet 3/2 {b16[ c b]} \tuplet 3/2 {a16[ b a]} |
     g8 \tuplet 3/2 {a16[ b a]} \tuplet 3/2 {g16[ a g]} |
     f8 \tuplet 3/2 {g16[ a g]} \tuplet 3/2 {f16[ g f]} |
@@ -106,9 +123,8 @@ guitarOne = \relative c'' {
 
     r8 <b d g> q |
     r8 <c e g> q |
+    \break
     g16 a b c d e |
-    \mergeDifferentlyDottedOn
-    \mergeDifferentlyHeadedOn
     <<
       {
         \voiceOne
@@ -116,7 +132,7 @@ guitarOne = \relative c'' {
       }
       \\
       {
-        \voiceTwo
+        \voiceTwoCust
         c4.
       }
     >>
@@ -125,15 +141,13 @@ guitarOne = \relative c'' {
     r8 <c e g> q |
     d16 c b a g f |
 
-    \mergeDifferentlyDottedOff
-    \mergeDifferentlyHeadedOff
     <<
       {e4.} \\ {e4.}
     >>
-    \mergeDifferentlyDottedOn
-    \mergeDifferentlyHeadedOn
   }
 
+  \break
+  
   \barNumberCheck 53
 
   \relative c''' \repeat volta 2 {
@@ -166,7 +180,7 @@ guitarOne = \relative c'' {
 }
 
 guitarTwo = \relative c' {
-  \voiceTwo
+  \voiceTwoCust
   \mergeDifferentlyDottedOn
   \mergeDifferentlyHeadedOn
 
@@ -201,7 +215,7 @@ guitarTwo = \relative c' {
         e8 <gs' b' d''> q |
       }
       \new Voice {
-        \voiceTwo
+        \voiceTwoCust
         e4. |
         e4. |
         
@@ -232,7 +246,7 @@ guitarTwo = \relative c' {
         e8 <gs b e'> q |
       }
       \new Voice {
-        \voiceTwo
+        \voiceTwoCust
         a4. | a4. | a4. | a4. |
         f'4. | d'4. | e4. | e4. |
       }
@@ -265,7 +279,7 @@ guitarTwo = \relative c' {
         e8 <gs b e'> q |
       }
       \new Voice {
-        \voiceTwo
+        \voiceTwoCust
         e4. | e4. | f4. | e4. |
       }
     >>
@@ -290,7 +304,7 @@ guitarTwo = \relative c' {
         e8 <gs b e'> q |
       }
       \new Voice {
-        \voiceTwo
+        \voiceTwoCust
         e4. | e4. | a4. | e4. |
         a4. | g4. | f4. | e4. |
       }
@@ -317,7 +331,7 @@ guitarTwo = \relative c' {
       
     }
     \relative c' \new Voice {
-      \voiceTwo
+      \voiceTwoCust
       g8 b d |
       c4. |
 
@@ -344,7 +358,7 @@ guitarTwo = \relative c' {
       e'8 <gs' b' e''> q |
     }
     \new Voice {
-      \voiceTwo
+      \voiceTwoCust
       a4. | d'4. | d'4. | e'4. |
     }
   >>
@@ -365,7 +379,7 @@ guitarTwo = \relative c' {
         e8 <gs b e'> q |
       }
       \new Voice {
-        \voiceTwo
+        \voiceTwoCust
         e4. | a4. | a4. |
         b4. | a4. | g4. | f4. |
         e4. |
@@ -382,7 +396,7 @@ guitarTwo = \relative c' {
       a8 r4 |
     }
     \new Voice {
-      \voiceTwo
+      \voiceTwoCust
       e8 \omit r8 e,8 |
       a8 r4 |
     }
@@ -407,7 +421,11 @@ guitarTwo = \relative c' {
     }
   >>
   \layout {
-    % TODO: repeats should be :.:, not :..:
-    % TODO: maybe format tuplets to include the horizontal spanning lines?
+    \context {
+      % TODO: repeats should be :.:, not :..:
+      \override TupletBracket.bracket-visibility = ##t
+      \override Voice.Dots.font-size = #-1
+      \override Voice.Dots.direction = #UP
+    }
   }
 }
