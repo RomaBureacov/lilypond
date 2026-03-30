@@ -15,7 +15,7 @@ Transcribed by Roman Bureacov
 
 voiceTwoCust = {
   \voiceTwo
-  \override Dots.direction = #UP
+  \override Dots.direction = #UP % note that voiceTwo overwrites this
 }
 
 guitarOne = \relative c'' {
@@ -147,7 +147,7 @@ guitarOne = \relative c'' {
   }
 
   \break
-  
+
   \barNumberCheck 53
 
   \relative c''' \repeat volta 2 {
@@ -219,7 +219,7 @@ guitarTwo = \relative c' {
         e4. |
         e4. |
         
-        a4. | % TODO: maybe move the dot engraving?
+        a4. | 
         a4. |
         
         f'4. |
