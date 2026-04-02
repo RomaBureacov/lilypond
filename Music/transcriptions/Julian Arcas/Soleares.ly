@@ -17,15 +17,19 @@ voiceTwoCust = {
   \voiceTwo
   \override Dots.direction = #UP % note that voiceTwo overwrites this
 }
+voiceOneCust = {
+  \voiceOne
+  \override Voice.Slur.direction = #DOWN
+}
 
 guitarOne = \relative c'' {
-  \voiceOne
-  
+  \voiceOneCust
+
   \repeat volta 2 {
-    a16 b d b c a |
+    a16 b d( b) c a |
     e8[ gs16 b e8] |
   
-    a,16 b d b c a |
+    a,16 b d( b) c a |
     e8[ gs16 b e8] |
     
     a,16 b d b c a |
@@ -38,18 +42,18 @@ guitarOne = \relative c'' {
   }
 
   \barNumberCheck 9
-  
+
   \relative c'' \repeat volta 2 {
     e8 fs gs |
     a8 b c |
-    d8[ c16 b c8] |
+    d8[ c16( b) c8] |
 
     \break
  
-    r8 b16 c d c |
+    r8 b16 c d( c) |
     b8[ a16 gs a8] |
     r8 \tuplet 3/2 { g16[ a g] } \tuplet 3/2 { f16[ g f] } |
-    e16 b' gs e b gs |
+    e16 b' gs( e) b gs |
     
     <<
       { \stemUp e'4 r8 }
@@ -61,12 +65,12 @@ guitarOne = \relative c'' {
   \barNumberCheck 17
 
   \relative c''' \repeat volta 2 {
-    c8 a b |
-    c8 d c |
+    c8 a  b |
+    c8 \glissando d  c |
     \break
     b8[ a16 gs a8]~ |
-    a8 b c |
-    b8[ a16 gs a8]~ |
+    a8 b c \glissando | 
+    b8[ a16( gs) a8]~ |
     a8 \noBeam \tuplet 3/2 { g16[ a g] } \tuplet 3/2 { f16[ g f] } |
     e4.~ |
     e4 r8 |
@@ -107,13 +111,13 @@ guitarOne = \relative c'' {
 
   \relative c''' \repeat volta 2 {
     r8 e8.[ f16] |
-    e8[ d16 c b8] |
+    e8[ d16( c) b8] |
     a16 b c d e f |
-    e8[ d16 c b8] |
+    e8[ d16( c) b8] |
     \break
-    a8 \tuplet 3/2 {b16[ c b]} \tuplet 3/2 {a16[ b a]} |
-    g8 \tuplet 3/2 {a16[ b a]} \tuplet 3/2 {g16[ a g]} |
-    f8 \tuplet 3/2 {g16[ a g]} \tuplet 3/2 {f16[ g f]} |
+    a8 \tuplet 3/2 {b16[( c b])} \tuplet 3/2 {a16[( b a])} |
+    g8 \tuplet 3/2 {a16[( b a])} \tuplet 3/2 {g16[( a g])} |
+    f8 \tuplet 3/2 {g16[( a g])} \tuplet 3/2 {f16[( g f])} |
     e4. |
   }
 
@@ -121,13 +125,15 @@ guitarOne = \relative c'' {
 
   \repeat volta 2 {
 
+    % TODO: how to do chord lines(?)?
+
     r8 <b d g> q |
     r8 <c e g> q |
     \break
     g16 a b c d e |
     <<
       {
-        \voiceOne
+        \voiceOneCust
         c8 <c e g> q |
       }
       \\
@@ -199,7 +205,7 @@ guitarTwo = \relative c' {
   \fixed c {
     <<
       \new Voice {
-        \voiceOne
+        \voiceOneCust
         e8 <d'' b' gs'>8 q |
         e8 <d'' b' gs'>8 q |
         
@@ -234,7 +240,7 @@ guitarTwo = \relative c' {
   \fixed c {
     <<
       \new Voice {
-        \voiceOne
+        \voiceOneCust
         \repeat unfold 4 {
           a8 <e' a' c''> q |
         }
@@ -253,6 +259,8 @@ guitarTwo = \relative c' {
   
   \barNumberCheck 25
 
+  % TODO: maybe append missing slurs here?
+
   a,8 c e |
   e,8[ gs16 b e8] |
 
@@ -270,7 +278,7 @@ guitarTwo = \relative c' {
   \fixed c' {
     <<
       \new Voice {
-        \voiceOne
+        \voiceOneCust
         e8 <gs b e'> q |
         e8 <gs b e'> q |
         f8 <a d'> q |
@@ -288,7 +296,7 @@ guitarTwo = \relative c' {
   \fixed c' {
     <<
       \new Voice {
-        \voiceOne
+        \voiceOneCust
         e8 <gs b e'> q |
         e8 <gs b e'> q |
         
@@ -313,7 +321,7 @@ guitarTwo = \relative c' {
   
   <<
     \relative c'' \new Voice {
-      \voiceOne
+      \voiceOneCust
       g8 b d |
       c4. |
 
@@ -349,7 +357,7 @@ guitarTwo = \relative c' {
   \fixed c
   <<
     \new Voice {
-      \voiceOne
+      \voiceOneCust
       a8 <e' a' c''> q |
       d'8 <a' d''> q |
       d'8 <a' d''> q |
@@ -366,7 +374,7 @@ guitarTwo = \relative c' {
   \fixed c' {
     <<
       \new Voice {
-        \voiceOne
+        \voiceOneCust
         e8 <gs b e'> q |
         a8 <a c'> q |
         a8 <a c'> q |
@@ -389,7 +397,7 @@ guitarTwo = \relative c' {
 
   <<
     \new Voice {
-      \voiceOne
+      \voiceOneCust
       e8 r8 e8 |
       a8 r4 |
     }
@@ -420,11 +428,11 @@ guitarTwo = \relative c' {
     }
   >>
   \layout {
-    \context {
-      % TODO: repeats should be :.:, not :..:
-      \override TupletBracket.bracket-visibility = ##t
-      \override Voice.Dots.font-size = #-1
-      \override Voice.Dots.direction = #UP
-    }
+    \override TupletBracket.bracket-visibility = ##t
+    
+    % TODO: repeats should be :.:, not :..:
+    \override Voice.Dots.font-size = #-1
+    \override Voice.Dots.direction = #UP
+    \override Voice.Slur.thickness = #3
   }
 }
