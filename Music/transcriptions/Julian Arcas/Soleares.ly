@@ -168,7 +168,7 @@ guitarOne = \relative c'' {
   \repeat volta 2 {
     r16 e'16 fs gs a b |
     c8 c c |
-    \tuplet 3/2 {c16[ d c]} b8 c |
+    \tuplet 3/2 {c16[( d c])} b8 c |
     d8.[ c16 b8] |
     c8.[ b16 a8] |
     b8.[ a16 g8] |
