@@ -27,7 +27,7 @@ guitarOne = \relative c'' {
 
   \repeat volta 2 {
     a16 b d( b) c a |
-    e8[ gs16 b e8] |
+    e8[_2 gs16_1 b e8] |
   
     a,16 b d( b) c a |
     e8[ gs16 b e8] |
@@ -44,35 +44,36 @@ guitarOne = \relative c'' {
   \barNumberCheck 9
 
   \relative c'' \repeat volta 2 {
-    e8 fs gs |
-    a8 b c |
-    d8[ c16( b) c8] |
+
+    e8-0 fs-1 gs-3 |
+    a8-1 b-3 c-4 |
+    d8[-4 c16(-2 b)-1 c8-2] |
 
     \break
  
-    r8 b16 c d( c) |
-    b8[ a16 gs a8] |
-    r8 \tuplet 3/2 { g16[ a g] } \tuplet 3/2 { f16[ g f] } |
-    e16 b' gs( e) b gs |
+    r8 b16-1 c-2 d(-4 c)-2 |
+    b8[-1 a16(-2 gs)-1 a8]-2 |
+    r8 \tuplet 3/2 { g16[-1 a g] } \tuplet 3/2 { f16[-1 g f] } |
+    e16-0 b'-4 gs(-1 e)-0 b-0 gs-2\5 | % TODO: change string number to be printed below
     
     <<
       { \stemUp e'4 r8 }
       \\
-      { \stemDown e,4 r8 }
+      { \stemDown e,4\5 r8 } % TODO: change how the string number is printed
     >>
   }
 
   \barNumberCheck 17
 
   \relative c''' \repeat volta 2 {
-    c8 a  b |
-    c8 \glissando d  c |
+    c8-4 a-1  b-3 |
+    c8-4 \glissando d-4  c-2 |
     \break
-    b8[ a16 gs a8]~ |
-    a8 b c \glissando | 
-    b8[ a16( gs) a8]~ |
-    a8 \noBeam \tuplet 3/2 { g16[ a g] } \tuplet 3/2 { f16[ g f] } |
-    e4.~ |
+    b8[-1 a16-2 gs-1 \glissando a8]-1~ |
+    a8 b-3 c-4 \glissando | 
+    b8[-4 a16(-2 gs)-1 a8]~ |
+    a8 \noBeam \tuplet 3/2 { g16[-1 a g] } \tuplet 3/2 { f16[-1 g f] } |
+    e4.-0~ |
     e4 r8 |
     \break
   }
@@ -80,13 +81,13 @@ guitarOne = \relative c'' {
   \barNumberCheck 25
 
   \relative \repeat volta 2 {
-    a'16 b d b c a |
+    a'16 b d( b) c a |
     e8[ gs16 b e8] |
 
-    a,16 b d b c a |
+    a,16 b d( b) c a |
     e8[ gs16 b e8] |
 
-    a,16 b d b c a |
+    a,16 b d( b) c a |
     g8[ b16 d g8] |    
 
     \break
@@ -99,8 +100,8 @@ guitarOne = \relative c'' {
   \barNumberCheck 33
 
   \relative c''' \repeat volta 2 {
-    r8 e8.[ f16] |
-    e4 d8 |
+    r8 e8.[-3 f16-4] |
+    e4-3 d8-1 |
     r8 c8.[ b16] |
     a8[ g16 f e8] |
   }
@@ -109,16 +110,16 @@ guitarOne = \relative c'' {
 
   \barNumberCheck 37
 
-  \relative c''' \repeat volta 2 {
-    r8 e8.[ f16] |
-    e8[ d16( c) b8] |
-    a16 b c d e f |
-    e8[ d16( c) b8] |
+  \relative c''' \repeat volta 2 { % TODO: needs string numbers
+    r8 e8.[-3 f16]-4 |
+    e8[-3 d16(-1 c)-4 b8]-3 |
+    a16-1 b-3 c-4 d-1 e-3 f-4 |
+    e8[-3 d16(-4 c)-2 b8]-1 |
     \break
-    a8 \tuplet 3/2 {b16[( c b])} \tuplet 3/2 {a16[( b a])} |
-    g8 \tuplet 3/2 {a16[( b a])} \tuplet 3/2 {g16[( a g])} |
-    f8 \tuplet 3/2 {g16[( a g])} \tuplet 3/2 {f16[( g f])} |
-    e4. |
+    a8-4 \tuplet 3/2 {b16[(-1 c b])} \tuplet 3/2 {a16[(-1 b a])} | % TODO: fingering needs cleanup
+    g8 \tuplet 3/2 {a16[(-1 b a])} \tuplet 3/2 {g16[(-1 a g])} |
+    f8 \tuplet 3/2 {g16[(-1 a g])} \tuplet 3/2 {f16[(-1 g f])} |
+    e4.-0 |
   }
 
   \barNumberCheck 45
@@ -126,15 +127,16 @@ guitarOne = \relative c'' {
   \repeat volta 2 {
 
     % TODO: how to do chord lines(?)?
+    \set fingeringOrientations = #'(left)
 
-    r8 <b d g> q |
-    r8 <c e g> q |
+    r8 <b-2 d-1 g-1> q |
+    r8 <c-3 e-4 g-1> q |
     \break
-    g16 a b c d e |
+    g16-0 a-1 b-3 c-4 d-1 e-4 | % TODO: fingerings aren't on the left
     <<
       {
         \voiceOneCust
-        c8 <c e g> q |
+        c8 <c-4 e-3 g-1> q |
       }
       \\
       {
@@ -143,12 +145,12 @@ guitarOne = \relative c'' {
       }
     >>
 
-    r8 <b d g> q |
-    r8 <c e g> q |
-    d16 c b a g f |
+    r8 <b-2 d-1 g-1> q |
+    r8 <c-3 e-4 g-1> q |
+    d16-4 c-1 b-0 a-2 g-0 f-2 |
 
     <<
-      {e4.} \\ {e4.}
+      {e4.-2} \\ {e4.}
     >>
   }
 
@@ -157,31 +159,33 @@ guitarOne = \relative c'' {
   \barNumberCheck 53
 
   \relative c''' \repeat volta 2 {
-    r8 c8.[ c16] |
-    c4 b8 |
-    r8 a8.[ gs16] |
-    e4.
+    r8 c8.[-4 c16] |
+    c4-4 b8-3 |
+    r8 a8.[-2 gs16]-1 |
+    e4.-0 |
   }
   
   \barNumberCheck 57
   
   \repeat volta 2 {
-    r16 e'16 fs gs a b |
-    c8 c c |
-    \tuplet 3/2 {c16[( d c])} b8 c |
-    d8.[ c16 b8] |
-    c8.[ b16 a8] |
-    b8.[ a16 g8] |
-    a8.[ g16 f8] |
-    e4. |
+    r16 e'16-2 fs-4 gs-1 a-2 b-4 |
+    c8-2 c c |
+    \tuplet 3/2 {c16[(-2 d-4 c])-2} b8-1 c-2 | % TODO: fix fingerings on triplets
+    d8.[-4 c16-2 b8]-1 |
+    c8.[-2 b16-1 a8]-4 |
+    b8.[-1 a16-4 g8]-2 |
+    a8.[-4 g16-2 f8]-1 |
+    e4.-1 |
   }
 
   \barNumberCheck 65
 
   {
-    e8 r8 <b d gs>8 |
-    <c e a>8 r4 |
+    e8 r8 <b-3 d-2 gs-4>8 |
+    <c-3 e-2 a-4>8 r4 | % TODO: move rests down
   }
+
+  \bar "||" % TODO: connect ending staves?
  
 }
 
@@ -395,7 +399,7 @@ guitarTwo = \relative c' {
   
   \barNumberCheck 65
 
-  <<
+  << % TODO: move rests down
     \new Voice {
       \voiceOneCust
       e8 r8 e8 |
@@ -434,5 +438,6 @@ guitarTwo = \relative c' {
     \override Voice.Dots.font-size = #-1
     \override Voice.Dots.direction = #UP
     \override Voice.Slur.thickness = #3
+    % TODO: make glissando thicker
   }
 }
