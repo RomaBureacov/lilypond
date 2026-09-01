@@ -20,6 +20,8 @@ voiceTwoCust = {
 voiceOneCust = {
   \voiceOne
   \override Voice.Slur.direction = #DOWN
+  \override Fingering.outside-staff-priority = #100
+  \override TupletBracket.outside-staff-priority = #99
 }
 
 guitarOne = \relative c'' {
@@ -51,15 +53,25 @@ guitarOne = \relative c'' {
 
     \break
  
-    r8 b16-1 c-2 d(-4 c)-2 |
-    b8[-1 a16(-2 gs)-1 a8]-2 |
-    r8 \tuplet 3/2 { g16[-1 a g] } \tuplet 3/2 { f16[-1 g f] } |
-    e16-0 b'-4 gs(-1 e)-0 b-0 gs-2\5 | % TODO: change string number to be printed below
+    {
+      \override Slur.ratio = #0.5
+      r8 b16-1 c-2 d(-4 c)-2 |
+      b8[-1 a16(-2 gs)-1 a8]-2 |
+      r8 \tuplet 3/2 { g16[^1 a g] } \tuplet 3/2 { f16[^1 g f] } |
+      \revert Voice.Fingering.padding
+      \set stringNumberOrientations = #'(down)
+      e16-0 b'-4 gs(-1 e)-0 b-0 gs-2\5 |
+      \revert Slur.ratio
+    }
     
     <<
       { \stemUp e'4 r8 }
       \\
-      { \stemDown e,4\5 r8 } % TODO: change how the string number is printed
+      { 
+        \set stringNumberOrientations = #'(left)
+        \once \override StringNumber.self-alignment-Y = #4
+        \stemDown e,4\5 r8 
+      }
     >>
   }
 
@@ -73,6 +85,7 @@ guitarOne = \relative c'' {
     a8 b-3 c-4 \glissando | 
     b8[-4 a16(-2 gs)-1 a8]~ |
     a8 \noBeam \tuplet 3/2 { g16[-1 a g] } \tuplet 3/2 { f16[-1 g f] } |
+    \once \override Voice.Fingering.parent-alignment-X = #-0.5
     e4.-0~ |
     e4 r8 |
     \break
@@ -101,7 +114,10 @@ guitarOne = \relative c'' {
 
   \relative c''' \repeat volta 2 {
     r8 e8.[-3 f16-4] |
-    e4-3 d8-1 |
+    \once \override Voice.Fingering.parent-alignment-X = #-0.5
+    e4-3 
+    \once \override Voice.Fingering.parent-alignment-X = #-0.5
+    d8-1 |
     r8 c8.[ b16] |
     a8[ g16 f e8] |
   }
@@ -110,33 +126,43 @@ guitarOne = \relative c'' {
 
   \barNumberCheck 37
 
-  \relative c''' \repeat volta 2 { % TODO: needs string numbers
+  \relative c''' \repeat volta 2 {
+    \set stringNumberOrientations = #'(left)
     r8 e8.[-3 f16]-4 |
     e8[-3 d16(-1 c)-4 b8]-3 |
-    a16-1 b-3 c-4 d-1 e-3 f-4 |
+    a16-1\2 b-3 c-4 d-1 e-3 f-4 |
     e8[-3 d16(-4 c)-2 b8]-1 |
     \break
-    a8-4 \tuplet 3/2 {b16[(-1 c b])} \tuplet 3/2 {a16[(-1 b a])} | % TODO: fingering needs cleanup
+    \once \override Voice.Fingering.parent-alignment-X = #-0.5
+    \once \override Voice.Fingering.parent-alignment-Y = #1
+    a8-4\2
+    \tuplet 3/2 {b16[(-1 c b])} \tuplet 3/2 {a16[(-1 b a])} |
     g8 \tuplet 3/2 {a16[(-1 b a])} \tuplet 3/2 {g16[(-1 a g])} |
     f8 \tuplet 3/2 {g16[(-1 a g])} \tuplet 3/2 {f16[(-1 g f])} |
+    \override Voice.Fingering.parent-alignment-X = #-0.5
     e4.-0 |
+    \unset stringNumberOrientations
+    \revert Voice.Fingering.parent-alignment-X
+    \revert Voice.Fingering.parent-alignment-Y
   }
 
   \barNumberCheck 45
 
   \repeat volta 2 {
 
-    % TODO: how to do chord lines(?)?
     \set fingeringOrientations = #'(left)
-
+    \revert Voice.Fingering.outside-staff-priority
     r8 <b-2 d-1 g-1> q |
     r8 <c-3 e-4 g-1> q |
     \break
-    g16-0 a-1 b-3 c-4 d-1 e-4 | % TODO: fingerings aren't on the left
+    g16-0 a-1 b-3 c-4 d-1 e-4 | 
     <<
       {
         \voiceOneCust
-        c8 <c-4 e-3 g-1> q |
+        c8
+        \set fingeringOrientations = #'(left)
+        \revert Voice.Fingering.outside-staff-priority
+        <c-4 e-3 g-1> q |
       }
       \\
       {
@@ -160,33 +186,55 @@ guitarOne = \relative c'' {
 
   \relative c''' \repeat volta 2 {
     r8 c8.[-4 c16] |
-    c4-4 b8-3 |
+    \once \override Voice.Fingering.parent-alignment-X = #-0.5
+    c4-4 
+    \once \override Voice.Fingering.parent-alignment-X = #-0.5
+    b8-3 |
     r8 a8.[-2 gs16]-1 |
+    \once \override Voice.Fingering.parent-alignment-X = #-0.5
     e4.-0 |
   }
   
   \barNumberCheck 57
   
   \repeat volta 2 {
-    r16 e'16-2 fs-4 gs-1 a-2 b-4 |
+    
+    r16 e'16-2\2 fs-4 gs-1\1 a-2 b-4 |
     c8-2 c c |
-    \tuplet 3/2 {c16[(-2 d-4 c])-2} b8-1 c-2 | % TODO: fix fingerings on triplets
+    \override Voice.Fingering.outside-staff-priority = #100
+    \tuplet 3/2 {c16[(-2 d-4 c])-2}
+    b8-1 c-2 | 
     d8.[-4 c16-2 b8]-1 |
     c8.[-2 b16-1 a8]-4 |
     b8.[-1 a16-4 g8]-2 |
     a8.[-4 g16-2 f8]-1 |
-    e4.-1 |
+
+    \set stringNumberOrientations = #'(right)
+    \override Voice.StringNumber.parent-alignment-Y = #-6
+    \alternative {
+      {
+        \once \override Voice.Fingering.parent-alignment-X = #-0.5
+        e4.-1 |
+      }
+      {
+        \barNumberCheck 65
+        \voiceTwoCust
+        e8 
+        \voiceOneCust
+        \revert Voice.Fingering.outside-staff-priority
+        b8 \rest <b-3 d-2 gs-4\3>8 |
+      }
+    }
+ 
   }
 
-  \barNumberCheck 65
 
   {
-    e8 r8 <b-3 d-2 gs-4>8 |
-    <c-3 e-2 a-4>8 r4 | % TODO: move rests down
+    <c-3 e-2 a-4\3>8 b4\rest^\markup { "Fine" } | 
   }
 
-  \bar "||" % TODO: connect ending staves?
- 
+  \bar "|."
+
 }
 
 guitarTwo = \relative c' {
@@ -262,8 +310,6 @@ guitarTwo = \relative c' {
   }
   
   \barNumberCheck 25
-
-  % TODO: maybe append missing slurs here?
 
   a,8 c e |
   e,8[ gs16 b e8] |
@@ -399,25 +445,29 @@ guitarTwo = \relative c' {
   
   \barNumberCheck 65
 
-  << % TODO: move rests down
+  << 
     \new Voice {
       \voiceOneCust
-      e8 r8 e8 |
-      a8 r4 |
+      e8 b'8 \rest e,8 |
+      a8 a4 \rest |
     }
     \new Voice {
       \voiceTwoCust
       e8 \omit r8 e,8 |
-      a8 r4 |
+      a8 a4\rest^\markup { "Fine" }|
     }
   >>
 
 }
 
 
-
+\paper {
+  top-system-spacing = #'((minimum-distance . 20))
+  system-system-spacing = #'((minimum-distance . 30))
+  last-bottom-spacing = #'((minimum-distance . 20))
+}
 \score {
-  <<
+  \new StaffGroup <<
     \new Staff = "guitar1" {
       \time 3/8
       \mergeDifferentlyDottedOn
@@ -432,12 +482,18 @@ guitarTwo = \relative c' {
     }
   >>
   \layout {
-    \override TupletBracket.bracket-visibility = ##t
+    \context {
+      \StaffGroup \override SystemStartBracket.stencil = ##f
+    }
     
-    % TODO: repeats should be :.:, not :..:
+    \override TupletBracket.bracket-visibility = ##t
+    \override Score.VoltaBracket.edge-height = #'(4 . 4)
+    
+    \set Score.finalFineTextVisibility = ##t
+    \set Score.doubleRepeatBarType = ":|.:"
     \override Voice.Dots.font-size = #-1
     \override Voice.Dots.direction = #UP
     \override Voice.Slur.thickness = #3
-    % TODO: make glissando thicker
+    \override Voice.Glissando.thickness = #2
   }
 }
