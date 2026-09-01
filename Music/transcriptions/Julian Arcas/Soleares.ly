@@ -10,6 +10,7 @@ Transcribed by Roman Bureacov
 \header {
   title = "Soleares"
   composer = "Julian Arcas"
+  arranger = "Transcribed by Roman Bureacov"
 }
 
 
@@ -462,7 +463,7 @@ guitarTwo = \relative c' {
 
 
 \paper {
-  top-system-spacing = #'((minimum-distance . 20))
+  markup-system-spacing = #'((minimum-distance . 20))
   system-system-spacing = #'((minimum-distance . 30))
   last-bottom-spacing = #'((minimum-distance . 20))
 }
@@ -490,7 +491,7 @@ guitarTwo = \relative c' {
     \override Score.VoltaBracket.edge-height = #'(4 . 4)
     
     \set Score.finalFineTextVisibility = ##t
-    \set Score.doubleRepeatBarType = ":|.:"
+    \set Score.doubleRepeatBarType = ":|.|:"
     \override Voice.Dots.font-size = #-1
     \override Voice.Dots.direction = #UP
     \override Voice.Slur.thickness = #3
